@@ -35,3 +35,41 @@ Apply sealed-secret:
 ```bash
 kubectl apply -f /tmp/harbor-sealedsecret.yaml
 ```
+
+---
+
+#### Backup Private Key
+
+```bash
+SEALED_SECRET_PRIVATE_KEY_SECRET=$(kubectl get secrets \
+  -l sealedsecrets.bitnami.com/sealed-secrets-key=active \
+  -n sealed-secrets \
+  -o jsonpath='{.items[0].metadata.name}')
+```
+
+```bash
+kubectl get secret $SEALED_SECRET_PRIVATE_KEY_SECRET \
+  -n sealed-secrets -o yaml > /tmp/sealed-secrets-key-backup.yaml
+```
+
+#### Restore Private Key
+
+Delete new secret:
+```bash
+kubectl delete secret -n sealed-secrets \
+  -l sealedsecrets.bitnami.com/sealed-secrets-key
+```
+
+Apply old secret:
+```bash
+kubectl apply -f /tmp/sealed-secrets-key-backup.yaml
+```
+
+Restart sealed-secrets controller:
+```bash
+kubectl rollout restart deployment sealed-secrets -n sealed-secrets
+```
+
+
+
+
