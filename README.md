@@ -64,6 +64,7 @@ Create `git-credentials` sealed-secret:
 kubeseal \
   --controller-name=sealed-secrets \
   --controller-namespace=sealed-secrets \
+  --scope cluster-wide \
   --format yaml \
   < /tmp/git-credentials.yaml > /tmp/git-credentials-sealedsecret.yaml
 ```
