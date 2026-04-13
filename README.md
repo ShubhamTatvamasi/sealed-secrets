@@ -111,4 +111,16 @@ kubectl rollout restart deployment sealed-secrets -n sealed-secrets
 
 
 
+### Base64
+
+
+Convert to base64:
+```bash
+cat /tmp/sealed-secrets-key-backup.yaml | base64 > /tmp/sealed-secrets-key-backup.yaml.b64
+```
+
+Convert back to yaml:
+```bash
+cat /tmp/sealed-secrets-key-backup.yaml.b64 | base64 -d > /tmp/sealed-secrets-key-backup.yaml
+```
 
