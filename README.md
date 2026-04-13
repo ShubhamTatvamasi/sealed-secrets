@@ -86,8 +86,9 @@ SEALED_SECRET_PRIVATE_KEY_SECRET=$(kubectl get secrets \
 ```
 
 ```bash
-kubectl get secret $SEALED_SECRET_PRIVATE_KEY_SECRET \
-  -n sealed-secrets -o yaml > /tmp/sealed-secrets-key-backup.yaml
+kubectl -n sealed-secrets \
+  get secret $SEALED_SECRET_PRIVATE_KEY_SECRET \
+  -o yaml > /tmp/sealed-secrets-key-backup.yaml
 ```
 
 #### Restore Private Key
