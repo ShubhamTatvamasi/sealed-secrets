@@ -80,8 +80,8 @@ kubectl apply -f /tmp/git-credentials-sealedsecret.yaml
 
 ```bash
 SEALED_SECRET_PRIVATE_KEY_SECRET=$(kubectl get secrets \
-  -l sealedsecrets.bitnami.com/sealed-secrets-key=active \
   -n sealed-secrets \
+  -l sealedsecrets.bitnami.com/sealed-secrets-key=active \
   -o jsonpath='{.items[0].metadata.name}')
 ```
 
