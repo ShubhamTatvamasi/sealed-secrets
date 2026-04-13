@@ -68,6 +68,11 @@ kubeseal \
   < /tmp/git-credentials.yaml > /tmp/git-credentials-sealedsecret.yaml
 ```
 
+Apply sealed-secret:
+```bash
+kubectl apply -f /tmp/git-credentials-sealedsecret.yaml
+```
+
 ---
 
 #### Backup Private Key
