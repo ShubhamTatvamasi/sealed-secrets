@@ -59,6 +59,14 @@ kubectl create secret generic git-credentials \
   --dry-run=client -o yaml > /tmp/git-credentials.yaml
 ```
 
+Create `git-credentials` sealed-secret:
+```bash
+kubeseal \
+  --controller-name=sealed-secrets \
+  --controller-namespace=sealed-secrets \
+  --format yaml \
+  < /tmp/git-credentials.yaml > /tmp/git-credentials-sealedsecret.yaml
+```
 
 ---
 
