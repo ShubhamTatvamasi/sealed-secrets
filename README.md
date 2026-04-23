@@ -131,5 +131,7 @@ Flux reconcile git-credentials:
 flux reconcile kustomization git-credentials -n airflow
 ```
 
-
-
+Restart:
+```bash
+kubectl rollout restart deployment sealed-secrets -n sealed-secrets
+```
