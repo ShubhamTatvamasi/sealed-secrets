@@ -126,12 +126,9 @@ cat /tmp/sealed-secrets-key-backup.yaml.b64 | base64 -d > /tmp/sealed-secrets-ke
 
 ---
 
+### FluxCD
+
 Flux reconcile git-credentials:
 ```bash
 flux reconcile kustomization git-credentials -n airflow
-```
-
-Restart:
-```bash
-kubectl rollout restart deployment sealed-secrets -n sealed-secrets
 ```
