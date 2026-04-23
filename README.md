@@ -124,3 +124,12 @@ Convert back to yaml:
 cat /tmp/sealed-secrets-key-backup.yaml.b64 | base64 -d > /tmp/sealed-secrets-key-backup.yaml
 ```
 
+---
+
+Flux reconcile git-credentials:
+```bash
+flux reconcile kustomization git-credentials -n airflow
+```
+
+
+
