@@ -42,40 +42,6 @@ kubectl apply -f /tmp/harbor-sealedsecret.yaml
 
 ---
 
-### Git Token
-
-Setup Fine-grained personal access tokens:
-```bash
-export GITHUB_TOKEN=<gh-token>
-```
-
-Create `git-credentials` secret:
-```
-kubectl create secret generic git-credentials \
-  --from-literal=GIT_SYNC_USERNAME=git \
-  --from-literal=GIT_SYNC_PASSWORD=$GITHUB_TOKEN \
-  --from-literal=GITSYNC_USERNAME=git \
-  --from-literal=GITSYNC_PASSWORD=$GITHUB_TOKEN \
-  --dry-run=client -o yaml > /tmp/git-credentials.yaml
-```
-
-Create `git-credentials` sealed-secret:
-```bash
-kubeseal \
-  --controller-name=sealed-secrets \
-  --controller-namespace=sealed-secrets \
-  --scope cluster-wide \
-  --format yaml \
-  < /tmp/git-credentials.yaml > /tmp/git-credentials-sealedsecret.yaml
-```
-
-Apply sealed-secret:
-```bash
-kubectl apply -f /tmp/git-credentials-sealedsecret.yaml
-```
-
----
-
 #### Backup Private Key
 
 ```bash
