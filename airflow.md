@@ -20,12 +20,14 @@ kubectl create secret generic git-credentials \
 Create `git-credentials` sealed-secret:
 ```bash
 kubeseal \
+  --namespace airflow \
   --controller-name=sealed-secrets \
   --controller-namespace=sealed-secrets \
-  --scope cluster-wide \
   --format yaml \
   < /tmp/git-credentials.yaml > /tmp/git-credentials-sealedsecret.yaml
 ```
+> use `--scope cluster-wide` if you can secret to be deployed on any namespace.
+
 
 Apply sealed-secret:
 ```bash
