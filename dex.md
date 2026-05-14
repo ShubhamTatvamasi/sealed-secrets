@@ -8,6 +8,10 @@ kubectl create secret generic dex-client-secrets \
 ```
 
 ```
+yq '.data.FLUX_WEB_UI' /tmp/dex-client-secrets.yaml | base64 -d ; echo
+```
+
+```
 kubeseal \
   --controller-name=sealed-secrets \
   --controller-namespace=sealed-secrets \
