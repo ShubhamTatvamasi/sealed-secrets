@@ -2,7 +2,7 @@
 
 Add Helm repo:
 ```
-helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets/
+helm repo add sealed-secrets https://bitnami.github.io/sealed-secrets/
 ```
 
 Install Sealed Secrets
