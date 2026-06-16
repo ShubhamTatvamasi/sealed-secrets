@@ -61,3 +61,11 @@ Apply sealed-secret:
 ```bash
 kubectl apply -f /tmp/airflow-connections-sealedsecret.yaml
 ```
+
+Verify:
+```bash
+kubectl get secrets airflow-connections -o yaml | \
+  yq '.data |= with_entries(.value |= @base64d)'
+```
+
+
