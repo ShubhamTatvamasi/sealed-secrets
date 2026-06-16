@@ -42,6 +42,7 @@ Create `airflow-connections` secret:
 ```bash
 kubectl create secret generic airflow-connections \
   --from-literal=AIRFLOW_CONN_MY_POSTGRES="postgresql://airflow:airflow@postgres-rw-pooler.cnpg-system:5432/airflow" \
+  --from-literal=AIRFLOW_CONN_MY_HARBOR="https://admin:admin@harbor.k8s.shubhamtatvamasi.com" \
   --dry-run=client -o yaml > /tmp/airflow-connections.yaml
 ```
 > Connection ID: `my_postgres`
