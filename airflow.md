@@ -41,7 +41,7 @@ kubectl apply -f /tmp/git-credentials-sealedsecret.yaml
 Create `airflow-connections` secret:
 ```bash
 kubectl create secret generic airflow-connections \
-  --from-literal=AIRFLOW_CONN_MY_POSTGRES="postgresql://postgres:postgres@postgres:5432/postgres" \
+  --from-literal=AIRFLOW_CONN_MY_POSTGRES="postgresql://airflow:airflow@postgres-rw-pooler.cnpg-system:5432/airflow" \
   --dry-run=client -o yaml > /tmp/airflow-connections.yaml
 ```
 > Connection ID: `my_postgres`
