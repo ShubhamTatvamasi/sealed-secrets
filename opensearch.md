@@ -1,10 +1,16 @@
 # OpenSearch
 
+Create a cookie:
+```bash
+COOKIE=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 32)
+```
+
 Create a secret:
 ```
 kubectl create secret generic opensearch-admin-credentials \
   --from-literal=username=admin \
   --from-literal=password=admin \
+  --from-literal=cookie="$COOKIE" \
   --dry-run=client -o yaml > /tmp/opensearch-admin-credentials.yaml
 ```
 
