@@ -62,7 +62,3 @@ kubeseal \
   --format yaml \
   < /tmp/airflow-opensearch-connection.yaml > /tmp/airflow-opensearch-connection-sealedsecret.yaml
 ``
-
-
-
-
