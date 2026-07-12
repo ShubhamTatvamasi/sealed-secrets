@@ -44,6 +44,8 @@ create a secret
 ```bash
 kubectl create secret generic airflow-opensearch-connection \
   --from-literal=connection="$(printf "https://admin:%s@opensearch-cluster-master.opensearch:9200" "$PASS")" \
+  --from-literal=username=admin \
+  --from-literal=password=admin \
   --dry-run=client -o yaml > /tmp/airflow-opensearch-connection.yaml
 ```
 
