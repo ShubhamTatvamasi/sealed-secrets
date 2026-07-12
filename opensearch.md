@@ -29,3 +29,40 @@ kubeseal \
   --format yaml \
   < /tmp/opensearch-admin-credentials.yaml > /tmp/opensearch-admin-credentials-sealedsecret.yaml
 ```
+
+---
+
+### Airflow
+
+
+Get the real OpenSearch admin password:
+```bash
+PASS=$(kubectl -n opensearch get secret opensearch-admin-credentials -o jsonpath='{.data.password}' | base64 -d)
+```
+
+create a secret
+```bash
+kubectl create secret generic airflow-opensearch-connection \
+  --from-literal=connection="$(printf "https://admin:%s@opensearch-cluster-master.opensearch:9200" "$PASS")" \
+  --dry-run=client -o yaml > /tmp/airflow-opensearch-connection.yaml
+```
+
+verify
+```bash
+cat /tmp/airflow-opensearch-connection.yaml | \
+  yq '.data |= with_entries(.value |= @base64d)'
+```
+
+seal it:
+```bash
+kubeseal \
+  --controller-name=sealed-secrets \
+  --controller-namespace=sealed-secrets \
+  --scope cluster-wide \
+  --format yaml \
+  < /tmp/airflow-opensearch-connection.yaml > /tmp/airflow-opensearch-connection-sealedsecret.yaml
+``
+
+
+
+
