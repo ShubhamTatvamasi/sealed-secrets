@@ -3,7 +3,6 @@
 Create a cookie:
 ```bash
 COOKIE=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 32)
-PASSWORD=$(htpasswd -bnBC 12 "" 'admin' | cut -d: -f2)
 ```
 
 Create a secret:
