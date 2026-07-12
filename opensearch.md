@@ -61,4 +61,4 @@ kubeseal \
   --scope cluster-wide \
   --format yaml \
   < /tmp/airflow-opensearch-connection.yaml > /tmp/airflow-opensearch-connection-sealedsecret.yaml
-``
+```
