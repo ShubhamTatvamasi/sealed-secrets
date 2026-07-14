@@ -1,6 +1,10 @@
 # airflow connections
 
 Create `connections.json` file:
+```bash
+vim connections.json
+```
+
 ```json
 {
   "postgres_default": {
