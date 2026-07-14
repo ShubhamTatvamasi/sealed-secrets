@@ -1,29 +1,26 @@
 # airflow connections
 
-Create `connections.json` file:
+Create `connections.yaml` file:
 ```bash
-vim connections.json
+vim connections.yaml
 ```
 
-```json
-{
-  "postgres_default": {
-    "description": "Airflow Postgres",
-    "conn_type": "postgres",
-    "login": "airflow",
-    "password": "airflow",
-    "host": "postgres-rw-pooler.cnpg-system",
-    "port": 5432,
-    "schema": "airflow",
-    "extra": null
-  }
-}
+```yaml
+postgres_default:
+  conn_type: postgres
+  description: Airflow Postgres
+  extra: null
+  host: postgres-rw-pooler.cnpg-system
+  login: airflow
+  password: airflow
+  port: 5432
+  schema: airflow
 ```
 
 
 ```
 kubectl create secret generic airflow-connections-import \
-  --from-file=connections.json=connections.json \
+  --from-file=connections.yaml=connections.yaml \
   --dry-run=client -o yaml > /tmp/airflow-connections-import.yaml
 ```
 
