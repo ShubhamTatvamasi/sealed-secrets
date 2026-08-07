@@ -12,3 +12,11 @@ Verify details:
 ```bash
 openssl x509 -in /tmp/sealed-secrets.pem -text -noout
 ```
+
+```bash
+kubeseal \
+  --cert /tmp/sealed-secrets.pem \
+  --scope cluster-wide \
+  --format yaml \
+  < /tmp/shubhamtatvamasi-tls.yaml > /tmp/shubhamtatvamasi-tls-sealedsecret.yaml
+```
