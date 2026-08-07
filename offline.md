@@ -7,3 +7,8 @@ kubeseal \
   --controller-namespace sealed-secrets \
   --fetch-cert > /tmp/sealed-secrets.pem
 ```
+
+Verify details:
+```bash
+openssl x509 -in /tmp/sealed-secrets.pem -text -noout
+```
