@@ -13,6 +13,7 @@ Verify details:
 openssl x509 -in /tmp/sealed-secrets.pem -text -noout
 ```
 
+Create a sealed secret offline:
 ```bash
 kubeseal \
   --cert /tmp/sealed-secrets.pem \
