@@ -3,8 +3,8 @@
 
 ```bash
 kubectl create secret generic rustfs-credentials \
-  --from-literal=RUSTFS_ACCESS_KEY=$(openssl rand -hex 10 | tr '[:lower:]' '[:upper:]') \
-  --from-literal=RUSTFS_SECRET_KEY=$(openssl rand -base64 30) \
+  --from-literal=RUSTFS_ACCESS_KEY=$(openssl rand -base64 32 | tr -dc 'A-Z0-9' | head -c 20) \
+  --from-literal=RUSTFS_SECRET_KEY=$(openssl rand -base64 64 | tr -dc 'A-Za-z0-9' | head -c 40) \
   --dry-run=client -o yaml > /tmp/rustfs-credentials.yaml
 ```
 
