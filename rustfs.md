@@ -12,3 +12,14 @@ kubectl create secret generic rustfs-credentials \
 cat /tmp/rustfs-credentials.yaml | \
   yq '.data |= with_entries(.value |= @base64d)'
 ```
+
+
+```
+kubeseal \
+  --controller-name=sealed-secrets \
+  --controller-namespace=sealed-secrets \
+  --scope cluster-wide \
+  --format yaml \
+  < /tmp/rustfs-credentials.yaml > /tmp/rustfs-credentials-sealedsecret.yaml
+```
+
