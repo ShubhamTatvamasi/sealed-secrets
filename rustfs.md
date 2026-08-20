@@ -24,6 +24,6 @@ kubeseal \
 ```
 
 ```bash
-kubectl get secret rustfs-credentials -n rustfs -o yaml \
+kubectl get secret rustfs-credentials -n rustfs -o yaml | \
   yq '.data |= with_entries(.value |= @base64d)'
 ```
