@@ -21,7 +21,8 @@ kubeseal \
   --cert /tmp/sealed-secrets.pem \
   --scope cluster-wide \
   --format yaml \
-  < /tmp/shubhamtatvamasi-tls.yaml > /tmp/shubhamtatvamasi-tls-sealedsecret.yaml
+  < /tmp/shubhamtatvamasi-tls.yaml \
+  > /tmp/shubhamtatvamasi-tls-sealedsecret.yaml
 ```
 
 ---
