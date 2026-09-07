@@ -31,7 +31,7 @@ kubeseal \
 
 Download the `sealed-secrets-key` from cluster:
 ```bash
-kubectl -n kube-system get secret -l sealedsecrets.bitnami.com/sealed-secrets-key \
+kubectl -n sealed-secrets get secret -l sealedsecrets.bitnami.com/sealed-secrets-key \
   -o yaml > /tmp/sealed-secrets-key.yaml
 ```
 
