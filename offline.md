@@ -39,6 +39,7 @@ Decrypt the sealed secret:
 ```bash
 kubeseal --recovery-unseal \
   --recovery-private-key /tmp/sealed-secrets-key.yaml \
+  --format yaml \
   < shubhamtatvamasi-tls-sealedsecret.yaml \
   > shubhamtatvamasi-tls.yaml
 ```
