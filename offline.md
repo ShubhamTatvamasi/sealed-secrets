@@ -1,5 +1,7 @@
 # Offline
 
+### Encrypt
+
 Download certificate from sealed-secrets controller:
 ```bash
 kubeseal \
@@ -21,3 +23,23 @@ kubeseal \
   --format yaml \
   < /tmp/shubhamtatvamasi-tls.yaml > /tmp/shubhamtatvamasi-tls-sealedsecret.yaml
 ```
+
+---
+
+### Decrypt
+
+
+Download the `sealed-secrets-key` from cluster:
+```bash
+kubectl -n kube-system get secret -l sealedsecrets.bitnami.com/sealed-secrets-key \
+  -o yaml > sealed-secrets-key.yaml
+```
+
+Decrypt the sealed secret: 
+```bash
+kubeseal --recovery-unseal \
+  --recovery-private-key sealed-secrets-key.yaml \
+  < shubhamtatvamasi-tls-sealedsecret.yaml \
+  > shubhamtatvamasi-tls.yaml
+```
+
