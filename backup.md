@@ -11,7 +11,7 @@ SEALED_SECRET_PRIVATE_KEY_SECRET=$(kubectl get secrets \
 ```bash
 kubectl -n sealed-secrets \
   get secret $SEALED_SECRET_PRIVATE_KEY_SECRET \
-  -o yaml > /tmp/sealed-secrets-key-backup.yaml
+  -o yaml > /tmp/sealed-secrets-key.yaml
 ```
 
 Backup multiple keys:
@@ -19,5 +19,5 @@ Backup multiple keys:
 kubectl get secret \
   -n sealed-secrets \
   -l sealedsecrets.bitnami.com/sealed-secrets-key \
-  -o yaml > /tmp/sealed-secrets-backup.yaml
+  -o yaml > /tmp/sealed-secrets.yaml
 ```
