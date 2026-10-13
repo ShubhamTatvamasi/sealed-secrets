@@ -9,6 +9,7 @@ kubectl delete secret -n sealed-secrets \
 Apply old secret:
 ```bash
 kubectl apply -f /tmp/sealed-secrets-key.yaml
+kubectl apply -f sealed-secrets-key.yaml
 ```
 
 Restart sealed-secrets controller:
